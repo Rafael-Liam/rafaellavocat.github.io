@@ -739,25 +739,6 @@
       </div>
     </div>
 
-    <div class="pdp-card">
-      <div class="pdp-main-img" onclick="openLightbox('netflix')">
-        <img id="main-netflix" src="netflix.jpeg" alt="Carrousel Netflix fictif">
-        <div class="pdp-badge">6 slides</div>
-      </div>
-      <div class="pdp-thumbs">
-        <img class="active" src="netflix.jpeg" onclick="swapMain('netflix', 'netflix.jpeg', this)" alt="">
-        <img src="netflix 1.jpeg" onclick="swapMain('netflix', 'netflix 1.jpeg', this)" alt="">
-        <img src="netflix 2.jpeg" onclick="swapMain('netflix', 'netflix 2.jpeg', this)" alt="">
-        <img src="netflix 3.jpeg" onclick="swapMain('netflix', 'netflix 3.jpeg', this)" alt="">
-        <img src="netflix 4.jpeg" onclick="swapMain('netflix', 'netflix 4.jpeg', this)" alt="">
-      </div>
-      <div class="pdp-body">
-        <div class="pdp-tag">Instagram · Carrousel fictif</div>
-        <div class="pdp-title">Netflix — projet fictif</div>
-        <div class="pdp-desc">Carrousel créatif imaginé pour la marque Netflix dans le cadre d'un exercice personnel.</div>
-      </div>
-    </div>
-
   </div>
 
   <!-- BATTLES -->
@@ -765,7 +746,7 @@
   <div class="projects-grid" style="margin-bottom:4rem;">
 
     <div class="vs-card">
-      <img src="battle luidgi.jpeg" alt="Battle Luidji vs Zamdane" onclick="openLightbox('battle luidgi')">
+      <img src="battle luidgi.jpeg" alt="Battle Luidji vs Zamdane" style="width:100%;height:auto;display:block;cursor:default;">
       <div class="vs-card-body">
         <div class="project-card-tag">Instagram · Post comparatif</div>
         <div class="project-card-title">Luidji vs Zamdane</div>
@@ -774,7 +755,7 @@
     </div>
 
     <div class="vs-card">
-      <img src="battle travis.jpeg" alt="Battle Travis Scott vs Playboi Carti" onclick="openLightbox('battle travis')">
+      <img src="battle travis.jpeg" alt="Battle Travis Scott vs Playboi Carti" style="width:100%;height:auto;display:block;cursor:default;">
       <div class="vs-card-body">
         <div class="project-card-tag">Instagram · Post comparatif</div>
         <div class="project-card-title">Travis Scott vs Playboi Carti</div>
@@ -786,27 +767,28 @@
 
   <!-- LINKEDIN -->
   <h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:400;margin-bottom:1.5rem;color:var(--text-muted);">LinkedIn</h3>
-  <div class="pdp-grid">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
 
     <div class="pdp-card">
-      <div class="pdp-main-img" onclick="openLightbox('linkedin-mika')">
-        <img id="main-linkedin-mika" src="linkedin mika 1.jpeg" alt="Post LinkedIn Mika">
-      </div>
-      <div class="pdp-thumbs">
-        <img class="active" src="linkedin mika 1.jpeg" onclick="swapMain('linkedin-mika', 'linkedin mika 1.jpeg', this)" alt="">
-        <img src="linkedin mika 2.jpeg" onclick="swapMain('linkedin-mika', 'linkedin mika 2.jpeg', this)" alt="">
-      </div>
+      <img src="linkedin mika 1.jpeg" alt="Post LinkedIn Mika 1" style="width:100%;height:auto;display:block;">
       <div class="pdp-body">
         <div class="pdp-tag">LinkedIn · Post professionnel</div>
-        <div class="pdp-title">Mika — entreprise de musique</div>
+        <div class="pdp-title">Mika — entreprise de musique (1/2)</div>
         <div class="pdp-desc">Post professionnel rédigé pour une entreprise fictive du secteur musical.</div>
       </div>
     </div>
 
     <div class="pdp-card">
-      <div class="pdp-main-img" onclick="openLightbox('linkedin-nathan')">
-        <img id="main-linkedin-nathan" src="linkedin nathan.jpeg" alt="Post LinkedIn Nathan">
+      <img src="linkedin mika 2.jpeg" alt="Post LinkedIn Mika 2" style="width:100%;height:auto;display:block;">
+      <div class="pdp-body">
+        <div class="pdp-tag">LinkedIn · Post professionnel</div>
+        <div class="pdp-title">Mika — entreprise de musique (2/2)</div>
+        <div class="pdp-desc">Suite du post professionnel pour l'entreprise fictive du secteur musical.</div>
       </div>
+    </div>
+
+    <div class="pdp-card">
+      <img src="linkedin nathan.jpeg" alt="Post LinkedIn Nathan" style="width:100%;height:auto;display:block;">
       <div class="pdp-body">
         <div class="pdp-tag">LinkedIn · Post professionnel</div>
         <div class="pdp-title">L'intelligence artificielle</div>
@@ -848,6 +830,26 @@
         <div class="project-card-tag">Trip & Chill · Story Instagram</div>
         <div class="project-card-title">Story — Teasing offre étudiante</div>
         <div class="project-card-desc">Format story pensé pour annoncer une offre de voyage à prix réduit auprès d'une cible étudiante.</div>
+      </div>
+    </div>
+
+
+    <div class="pdp-card">
+      <div class="pdp-main-img" onclick="openLightbox('netflix')">
+        <img id="main-netflix" src="netflix.jpeg" alt="Carrousel Netflix fictif">
+        <div class="pdp-badge">6 slides</div>
+      </div>
+      <div class="pdp-thumbs">
+        <img class="active" src="netflix.jpeg" onclick="swapMain('netflix', 'netflix.jpeg', this)" alt="">
+        <img src="netflix 1.jpeg" onclick="swapMain('netflix', 'netflix 1.jpeg', this)" alt="">
+        <img src="netflix 2.jpeg" onclick="swapMain('netflix', 'netflix 2.jpeg', this)" alt="">
+        <img src="netflix 3.jpeg" onclick="swapMain('netflix', 'netflix 3.jpeg', this)" alt="">
+        <img src="netflix 4.jpeg" onclick="swapMain('netflix', 'netflix 4.jpeg', this)" alt="">
+      </div>
+      <div class="pdp-body">
+        <div class="pdp-tag">Projet école · Carrousel fictif</div>
+        <div class="pdp-title">Netflix — projet fictif</div>
+        <div class="pdp-desc">Carrousel créatif imaginé pour la marque Netflix dans le cadre d'un exercice personnel.</div>
       </div>
     </div>
 

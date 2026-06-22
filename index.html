@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rafael Lavocat-Dubuis — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0A0A0A;
+    --bg-card: #141414;
+    --bg-card2: #1C1C1C;
+    --text: #F5F0E8;
+    --text-muted: #888880;
+    --gold: #C8A96E;
+    --gold-light: #E2C99A;
+    --border: rgba(255,255,255,0.08);
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.5rem 4rem;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 0 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 52%; height: 100%;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+    clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 600px; }
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 40px; height: 1px;
+    background: var(--gold);
+  }
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .hero-name span { display: block; }
+  .hero-name .last { font-style: italic; color: var(--gold); font-weight: 400; }
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    max-width: 480px;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    padding: 0.85rem 2rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .hero-cta:hover { background: var(--gold); color: var(--bg); }
+  .hero-img-wrap {
+    position: absolute; right: 4rem; top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+  .hero-img {
+    position: relative;
+    width: 340px; height: 440px;
+    object-fit: cover;
+    filter: grayscale(20%);
+    border: 1px solid var(--border);
+    display: block;
+    z-index: 2;
+  }
+  .hero-img-frame {
+    position: absolute; top: -16px; left: -16px;
+    width: 340px; height: 440px;
+    border: 1px solid var(--gold);
+    opacity: 0.5;
+    z-index: 1;
+  }
+  .hero-img-tag {
+    position: absolute; bottom: -1px; left: -1px;
+    background: var(--gold);
+    color: var(--bg);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    z-index: 3;
+  }
+  .hero-img-caption {
+    position: absolute; top: 50%; right: -2.5rem;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: right center;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  /* SECTIONS */
+  section { padding: 7rem 4rem; }
+  .section-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-eyebrow::before {
+    content: ''; display: block;
+    width: 30px; height: 1px;
+    background: var(--gold);
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 4rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* ABOUT */
+  .about { border-top: 1px solid var(--border); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+  .about-text p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+  }
+  .about-text p strong { color: var(--text); font-weight: 400; }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .skill-item {
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+  }
+  .skill-item .label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+  .skill-item .value {
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+
+  /* PROJECTS GRID */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: pointer;
+  }
+  .project-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+  }
+  .project-card-img {
+    width: 100%; aspect-ratio: 4/3;
+    background: var(--bg-card2);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .project-card-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  .project-card:hover .project-card-img img { transform: scale(1.04); }
+  .carousel-badge {
+    position: absolute; bottom: 10px; right: 10px;
+    background: rgba(10,10,10,0.85);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    padding: 4px 10px;
+    text-transform: uppercase;
+  }
+  .placeholder-img {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.5rem;
+  }
+  .placeholder-img .pi-icon {
+    font-size: 2rem; color: var(--text-muted); opacity: 0.3;
+  }
+  .placeholder-img .pi-text {
+    font-size: 0.7rem; color: var(--text-muted);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .project-card-body { padding: 1.25rem 1.5rem 1.5rem; }
+  .project-card-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .project-card-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  .project-card-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* VIDEO */
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .video-wrapper iframe {
+    width: 100%; height: 100%;
+    border: none;
+  }
+  .video-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 1rem;
+  }
+  .video-placeholder .vp-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .video-placeholder .vp-url {
+    font-size: 0.8rem;
+    color: var(--gold);
+    font-family: monospace;
+  }
+
+  /* ECOMMERCE */
+  .ecom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+  .ecom-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    transition: border-color 0.3s;
+  }
+  .ecom-card:hover { border-color: var(--gold); }
+  .ecom-card .ec-num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+  .ecom-card .ec-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .ecom-card .ec-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  .ecom-card .ec-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+  .ecom-card .ec-pills {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+  .ec-pill {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+
+  /* CONTACT */
+  .contact {
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .contact .section-title { margin-bottom: 1.5rem; }
+  .contact-sub {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin: 0 auto 3rem;
+  }
+  .contact-links {
+    display: flex; justify-content: center; gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .contact-link:hover { border-color: var(--gold); color: var(--gold); }
+  .contact-link.primary {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--bg);
+  }
+  .contact-link.primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer p { font-size: 0.75rem; color: var(--text-muted); }
+
+  /* DIVIDER */
+  .gold-line {
+    width: 60px; height: 1px;
+    background: var(--gold);
+    margin: 0 auto 2rem;
+  }
+
+  /* ANIMATION */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.8s ease forwards; }
+  .delay-1 { animation-delay: 0.2s; opacity: 0; }
+  .delay-2 { animation-delay: 0.4s; opacity: 0; }
+  .delay-3 { animation-delay: 0.6s; opacity: 0; }
+  .delay-4 { animation-delay: 0.8s; opacity: 0; }
+
+  /* PDP-STYLE CAROUSEL CARD */
+  .pdp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 2rem;
+  }
+  .pdp-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    transition: border-color 0.3s;
+  }
+  .pdp-card:hover { border-color: var(--gold); }
+  .pdp-main-img {
+    width: 100%; aspect-ratio: 4/5;
+    background: var(--bg-card2);
+    overflow: hidden;
+    position: relative;
+    cursor: zoom-in;
+  }
+  .pdp-main-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .pdp-badge {
+    position: absolute; bottom: 12px; right: 12px;
+    background: rgba(10,10,10,0.85);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    padding: 4px 10px;
+    text-transform: uppercase;
+  }
+  .pdp-thumbs {
+    display: flex; gap: 6px;
+    padding: 0.75rem 0.75rem 0;
+  }
+  .pdp-thumbs img {
+    width: 56px; height: 56px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    opacity: 0.55;
+    transition: opacity 0.2s, border-color 0.2s;
+    flex-shrink: 0;
+  }
+  .pdp-thumbs img:hover { opacity: 0.85; }
+  .pdp-thumbs img.active { opacity: 1; border-color: var(--gold); }
+  .pdp-body { padding: 1.25rem 1.5rem 1.5rem; }
+  .pdp-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .pdp-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  .pdp-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    display: none;
+    align-items: center; justify-content: center;
+    padding: 2rem;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox img {
+    max-width: 90vw; max-height: 85vh;
+    object-fit: contain;
+    border: 1px solid var(--border);
+  }
+  .lightbox-close {
+    position: absolute; top: 2rem; right: 2.5rem;
+    color: var(--text); font-size: 2rem;
+    cursor: pointer; line-height: 1;
+    background: none; border: none;
+  }
+  .lightbox-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 44px; height: 44px;
+    cursor: pointer; font-size: 1.2rem;
+  }
+  .lightbox-nav:hover { border-color: var(--gold); color: var(--gold); }
+  .lightbox-prev { left: 2rem; }
+  .lightbox-next { right: 2rem; }
+  .lightbox-counter {
+    position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+    font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.1em;
+  }
+
+  /* VS BATTLE CARD */
+  .vs-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 0;
+    overflow: hidden;
+  }
+  .vs-card img {
+    width: 100%; height: auto;
+    display: block;
+    cursor: default;
+  }
+  .vs-card-body { padding: 1.25rem 1.5rem 1.5rem; }
+
+  @media (max-width: 900px) {
+    /* NAV */
+    nav { padding: 1.2rem 2rem; }
+    .nav-links { display: none; }
+    .hero { padding: 0 2rem; }
+    .hero-img-wrap { display: none; }
+    .hero-name { font-size: 3.5rem; }
+
+    /* SECTIONS */
+    section { padding: 4rem 2rem; }
+
+    /* ABOUT */
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+
+    /* PROJETS */
+    .projects-grid { grid-template-columns: 1fr; }
+
+    /* PDP GRID */
+    .pdp-grid { grid-template-columns: 1fr; }
+
+    /* ECOM GRID */
+    .ecom-grid { grid-template-columns: 1fr; }
+
+    /* LINKEDIN 3 colonnes → 1 colonne */
+    div[style*="grid-template-columns:repeat(3,1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* PROJETS ÉCOLE 3 colonnes → 1 colonne */
+    div[style*="grid-template-columns:1fr 1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* PROJETS ÉCOLE 2 colonnes → 1 colonne */
+    div[style*="grid-template-columns:1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* ZARA grid 2 colonnes → 1 colonne */
+    div[style*="grid-template-columns:1fr 1fr;gap:3rem"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* CONTACT */
+    .contact-links { flex-direction: column; gap: 1rem; align-items: center; }
+    .nav-links { gap: 1.5rem; }
+    section { padding: 5rem 2rem; }
+    .hero { padding: 0 2rem; min-height: auto; padding-top: 8rem; padding-bottom: 4rem; flex-direction: column; }
+    .hero::before { display: none; }
+    .hero-img-wrap { position: static; transform: none; width: 100%; margin-bottom: 4rem; display: flex; justify-content: center; }
+    .hero-img { width: 100%; max-width: 340px; height: 380px; }
+    .hero-img-frame { display: none; }
+    .hero-img-caption { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .ecom-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-name { font-size: 2.8rem; }
+    section { padding: 3rem 1.5rem; }
+    nav { padding: 1rem 1.5rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .hero-eyebrow { font-size: 0.65rem; }
+  }
+
+  .linkedin-grid .pdp-card,
+  .linkedin-grid .pdp-card:hover {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .linkedin-grid .pdp-card img,
+  .linkedin-grid .pdp-main-img {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+  .linkedin-grid .pdp-main-img {
+    background: transparent !important;
+  }
+  .linkedin-grid .pdp-body {
+    padding: 0.75rem 0 0 !important;
+    margin-top: auto;
+    text-align: center;
+  }
+  .linkedin-grid .pdp-tag,
+  .linkedin-grid .pdp-title,
+  .linkedin-grid .pdp-desc {
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV --> <!-- v6 -->
+<nav>
+  <div class="nav-logo">R.L.D</div>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#social">Réseaux</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#ecommerce">E-commerce</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img-wrap fade-up">
+    <div class="hero-img-frame"></div>
+    <img class="hero-img" src="rafael-photo.jpg" alt="Rafael Lavocat-Dubuis">
+    <div class="hero-img-tag">Marketing & Communication</div>
+    <div class="hero-img-caption">Portfolio — 2026</div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow fade-up delay-1">Marketing Digital & Communication</div>
+    <h1 class="hero-name fade-up delay-2">
+      <span>Rafael</span>
+      <span class="last">Lavocat-Dubuis</span>
+    </h1>
+    <p class="hero-sub fade-up delay-3">
+      Étudiant en 3ème année de Marketing Digital & Communication,
+      je crée des contenus qui parlent, des boutiques qui vendent
+      et des stratégies qui convertissent.
+    </p>
+    <a href="#contact" class="hero-cta fade-up delay-4">Me contacter →</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-eyebrow">Profil</div>
+  <h2 class="section-title">Créatif, <em>curieux</em>,<br>orienté résultats.</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        Je m'appelle <strong>Rafael Lavocat-Dubuis</strong>, étudiant en 3ème année de 
+        Marketing Digital & Communication. Passionné par la création de contenu, 
+        l'e-commerce et la stratégie digitale, j'ai eu l'occasion de travailler 
+        sur des projets variés — des réseaux sociaux aux boutiques Shopify.
+      </p>
+      <p>
+        Je recherche actuellement une <strong>alternance en marketing digital et communication</strong>
+        pour continuer à apprendre aux côtés d'une équipe ambitieuse et mettre
+        mes compétences au service de projets qui ont du sens.
+      </p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <div class="label">Création de contenu</div>
+        <div class="value">Instagram · LinkedIn · Carrousels</div>
+      </div>
+      <div class="skill-item">
+        <div class="label">E-commerce</div>
+        <div class="value">Shopify · UX · Branding</div>
+      </div>
+      <div class="skill-item">
+        <div class="label">Community Management</div>
+        <div class="value">Ligne éditoriale · Engagement</div>
+      </div>
+      <div class="skill-item">
+        <div class="label">Stratégie digitale</div>
+        <div class="value">Audit · Refonte · Contenu</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEAUX SOCIAUX -->
+<section id="social" style="border-top: 1px solid var(--border);">
+  <div class="section-eyebrow">Réseaux sociaux</div>
+  <h2 class="section-title">Contenus <em>Instagram</em><br>& LinkedIn.</h2>
+
+  <!-- INSTAGRAM -->
+  <h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:400;margin-bottom:1.5rem;color:var(--text-muted);">Instagram — Carrousels</h3>
+  <div class="pdp-grid" style="margin-bottom:3rem;">
+
+    <div class="pdp-card">
+      <div class="pdp-main-img" onclick="openLightbox('drake')">
+        <img id="main-drake" src="drake.jpeg" alt="Carrousel Drake">
+        <div class="pdp-badge">4 slides</div>
+      </div>
+      <div class="pdp-thumbs">
+        <img class="active" src="drake.jpeg" onclick="swapMain('drake', 'drake.jpeg', this)" alt="">
+        <img src="drake 1.jpeg" onclick="swapMain('drake', 'drake 1.jpeg', this)" alt="">
+        <img src="drake 2.jpeg" onclick="swapMain('drake', 'drake 2.jpeg', this)" alt="">
+        <img src="drake 3.jpeg" onclick="swapMain('drake', 'drake 3.jpeg', this)" alt="">
+      </div>
+      <div class="pdp-body">
+        <div class="pdp-tag">Instagram · Carrousel</div>
+        <div class="pdp-title">L'ascension de Drake</div>
+        <div class="pdp-desc">Carrousel retraçant le parcours et la montée en puissance de l'artiste.</div>
+      </div>
+    </div>
+
+    <div class="pdp-card">
+      <div class="pdp-main-img" onclick="openLightbox('artiste')">
+        <img id="main-artiste" src="artiste.jpeg" alt="TikTok for Artists">
+        <div class="pdp-badge">5 slides</div>
+      </div>
+      <div class="pdp-thumbs">
+        <img class="active" src="artiste.jpeg" onclick="swapMain('artiste', 'artiste.jpeg', this)" alt="">
+        <img src="artiste 1.jpeg" onclick="swapMain('artiste', 'artiste 1.jpeg', this)" alt="">
+        <img src="artiste 2.jpeg" onclick="swapMain('artiste', 'artiste 2.jpeg', this)" alt="">
+        <img src="artiste 3.jpeg" onclick="swapMain('artiste', 'artiste 3.jpeg', this)" alt="">
+        <img src="artiste 4.jpeg" onclick="swapMain('artiste', 'artiste 4.jpeg', this)" alt="">
+      </div>
+      <div class="pdp-body">
+        <div class="pdp-tag">Instagram · Carrousel</div>
+        <div class="pdp-title">TikTok lance le mode "Artist"</div>
+        <div class="pdp-desc">Décryptage de la nouvelle fonctionnalité TikTok dédiée aux artistes.</div>
+      </div>
+    </div>
+
+    <div class="pdp-card">
+      <div class="pdp-main-img" onclick="openLightbox('spotify')">
+        <img id="main-spotify" src="spotify.jpeg" alt="Artistes les plus streamés sur Spotify">
+        <div class="pdp-badge">4 slides</div>
+      </div>
+      <div class="pdp-thumbs">
+        <img class="active" src="spotify.jpeg" onclick="swapMain('spotify', 'spotify.jpeg', this)" alt="">
+        <img src="spotify 1.jpeg" onclick="swapMain('spotify', 'spotify 1.jpeg', this)" alt="">
+        <img src="spotify 2.jpeg" onclick="swapMain('spotify', 'spotify 2.jpeg', this)" alt="">
+        <img src="spotify 3.jpeg" onclick="swapMain('spotify', 'spotify 3.jpeg', this)" alt="">
+      </div>
+      <div class="pdp-body">
+        <div class="pdp-tag">Instagram · Carrousel</div>
+        <div class="pdp-title">Top streamers Spotify</div>
+        <div class="pdp-desc">Les artistes les plus écoutés sur Spotify — classement et chiffres clés.</div>
+      </div>
+    </div>
+
+    <div class="pdp-card">
+      <div class="pdp-main-img" onclick="openLightbox('indila')">
+        <img id="main-indila" src="indila.jpeg" alt="Le retour d'Indila">
+        <div class="pdp-badge">4 slides</div>
+      </div>
+      <div class="pdp-thumbs">
+        <img class="active" src="indila.jpeg" onclick="swapMain('indila', 'indila.jpeg', this)" alt="">
+        <img src="indila 1.jpeg" onclick="swapMain('indila', 'indila 1.jpeg', this)" alt="">
+        <img src="indila 2.jpeg" onclick="swapMain('indila', 'indila 2.jpeg', this)" alt="">
+        <img src="indila 3.jpeg" onclick="swapMain('indila', 'indila 3.jpeg', this)" alt="">
+      </div>
+      <div class="pdp-body">
+        <div class="pdp-tag">Instagram · Carrousel</div>
+        <div class="pdp-title">Le retour d'Indila</div>
+        <div class="pdp-desc">Carrousel annonçant et célébrant le grand retour de l'artiste.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BATTLES -->
+  <h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:400;margin-bottom:1.5rem;color:var(--text-muted);">Instagram — Battles statistiques</h3>
+  <div class="projects-grid" style="margin-bottom:4rem;">
+
+    <div class="vs-card">
+      <img src="battle luidgi.jpeg" alt="Battle Luidji vs Zamdane" style="width:100%;height:auto;display:block;cursor:default;">
+      <div class="vs-card-body">
+        <div class="project-card-tag">Instagram · Post comparatif</div>
+        <div class="project-card-title">Luidji vs Zamdane</div>
+        <div class="project-card-desc">Comparatif chiffré : écoutes mensuelles, nombre d'albums et autres statistiques entre les deux artistes.</div>
+      </div>
+    </div>
+
+    <div class="vs-card">
+      <img src="battle travis.jpeg" alt="Battle Travis Scott vs Playboi Carti" style="width:100%;height:auto;display:block;cursor:default;">
+      <div class="vs-card-body">
+        <div class="project-card-tag">Instagram · Post comparatif</div>
+        <div class="project-card-title">Travis Scott vs Playboi Carti</div>
+        <div class="project-card-desc">Comparatif chiffré : écoutes mensuelles, nombre d'albums et autres statistiques entre les deux artistes.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LINKEDIN -->
+  <h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:400;margin-bottom:1.5rem;color:var(--text-muted);">LinkedIn</h3>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;" class="linkedin-grid">
+
+    <div class="pdp-card">
+      <img src="linkedin mika 1.jpeg" alt="Post LinkedIn Mika 1" style="width:100%;height:auto;max-height:650px;object-fit:contain;display:block;">
+      <div class="pdp-body">
+        <div class="pdp-tag">LinkedIn · Post professionnel</div>
+        <div class="pdp-title">Mika — entreprise de musique (1/2)</div>
+        <div class="pdp-desc">Post professionnel rédigé pour une entreprise fictive du secteur musical.</div>
+      </div>
+    </div>
+
+    <div class="pdp-card">
+      <img src="linkedin mika 2.jpeg" alt="Post LinkedIn Mika 2" style="width:100%;height:auto;max-height:650px;object-fit:contain;display:block;">
+      <div class="pdp-body">
+        <div class="pdp-tag">LinkedIn · Post professionnel</div>
+        <div class="pdp-title">Mika — entreprise de musique (2/2)</div>
+        <div class="pdp-desc">Suite du post professionnel pour l'entreprise fictive du secteur musical.</div>
+      </div>
+    </div>
+
+    <div class="pdp-card">
+      <img src="linkedin nathan.jpeg" alt="Post LinkedIn Nathan" style="width:100%;height:auto;max-height:650px;object-fit:contain;display:block;">
+      <div class="pdp-body">
+        <div class="pdp-tag">LinkedIn · Post professionnel</div>
+        <div class="pdp-title">L'intelligence artificielle</div>
+        <div class="pdp-desc">Post de réflexion professionnelle autour de l'IA et de ses enjeux actuels.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJETS ECOLE -->
+<section id="projets" style="border-top: 1px solid var(--border);">
+  <div class="section-eyebrow">Projets école</div>
+  <h2 class="section-title">Entreprises <em>fictives</em>,<br>compétences réelles.</h2>
+
+  <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:2.5rem;max-width:600px;">
+    Projet réalisé pour <strong style="color:var(--text);font-weight:400;">Trip & Chill</strong>, une marque fictive
+    imaginée en cours proposant des voyages à prix réduit pour les étudiants.
+  </p>
+
+  <!-- Grille projets école : 3 formats côte à côte, hauteur fixe harmonisée -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1.5rem;align-items:start;max-width:1370px;">
+
+    <!-- TIKTOK 9:16 -->
+    <div>
+      <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.75rem;">
+        <span style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:#fff;background:#000;padding:4px 10px;border-radius:3px;">TikTok</span>
+        <span style="font-size:0.62rem;color:var(--text-muted);">9 : 16</span>
+      </div>
+      <div style="width:100%;height:480px;background:var(--bg-card2);overflow:hidden;">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/SlumHJwt-K8" title="TikTok Trip and Chill" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:block;border:none;"></iframe>
+      </div>
+      <div style="padding:0.9rem 0 0;">
+        <div class="project-card-tag">Trip & Chill · TikTok</div>
+        <div style="font-family:var(--font-display);font-size:1rem;font-weight:400;color:var(--text);margin:0.3rem 0;">TikTok — Voyage à Venise</div>
+        <div class="project-card-desc">Vidéo TikTok pour une offre de voyage étudiant à Venise.</div>
+      </div>
+    </div>
+
+    <!-- STORY 9:16 -->
+    <div>
+      <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.75rem;">
+        <span style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:#fff;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);padding:4px 10px;border-radius:3px;">Story</span>
+        <span style="font-size:0.62rem;color:var(--text-muted);">9 : 16</span>
+      </div>
+      <div style="width:100%;height:480px;background:var(--bg-card2);overflow:hidden;">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/boIuB-nyfwg" title="Story Trip and Chill" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:block;border:none;"></iframe>
+      </div>
+      <div style="padding:0.9rem 0 0;">
+        <div class="project-card-tag">Trip & Chill · Story Instagram</div>
+        <div style="font-family:var(--font-display);font-size:1rem;font-weight:400;color:var(--text);margin:0.3rem 0;">Story — Teasing offre étudiante</div>
+        <div class="project-card-desc">Format story pour annoncer une offre de voyage à prix réduit.</div>
+      </div>
+    </div>
+
+    <!-- NETFLIX CARROUSEL 1:1 -->
+    <div>
+      <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.75rem;">
+        <span style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:#fff;background:#E50914;padding:4px 10px;border-radius:3px;">Carrousel</span>
+        <span style="font-size:0.62rem;color:var(--text-muted);">1 : 1</span>
+      </div>
+      <div style="width:100%;height:480px;overflow:hidden;position:relative;cursor:zoom-in;" onclick="openLightbox('netflix')">
+        <img id="main-netflix" src="netflix.jpeg" alt="Carrousel Netflix fictif" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="pdp-badge">6 slides</div>
+      </div>
+      <div style="display:flex;gap:0.4rem;margin-top:0.5rem;">
+        <img src="netflix.jpeg" onclick="event.stopPropagation();swapMain('netflix','netflix.jpeg',this)" style="width:36px;height:36px;object-fit:cover;cursor:pointer;border:1px solid var(--gold);" class="active" alt="">
+        <img src="netflix 1.jpeg" onclick="event.stopPropagation();swapMain('netflix','netflix 1.jpeg',this)" style="width:36px;height:36px;object-fit:cover;cursor:pointer;opacity:0.5;" alt="">
+        <img src="netflix 2.jpeg" onclick="event.stopPropagation();swapMain('netflix','netflix 2.jpeg',this)" style="width:36px;height:36px;object-fit:cover;cursor:pointer;opacity:0.5;" alt="">
+        <img src="netflix 3.jpeg" onclick="event.stopPropagation();swapMain('netflix','netflix 3.jpeg',this)" style="width:36px;height:36px;object-fit:cover;cursor:pointer;opacity:0.5;" alt="">
+        <img src="netflix 4.jpeg" onclick="event.stopPropagation();swapMain('netflix','netflix 4.jpeg',this)" style="width:36px;height:36px;object-fit:cover;cursor:pointer;opacity:0.5;" alt="">
+      </div>
+      <div style="padding:0.9rem 0 0;">
+        <div class="project-card-tag">Projet école · Carrousel fictif</div>
+        <div style="font-family:var(--font-display);font-size:1rem;font-weight:400;color:var(--text);margin:0.3rem 0;">Netflix — projet fictif</div>
+        <div class="project-card-desc">Carrousel créatif imaginé pour Netflix dans le cadre d'un exercice.</div>
+      </div>
+    </div>
+
+
+    <!-- X / TWITTER -->
+    <div>
+      <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.75rem;">
+        <span style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:#fff;background:#000;padding:4px 10px;border-radius:3px;">𝕏 Post</span>
+        <span style="font-size:0.62rem;color:var(--text-muted);">Twitter / X</span>
+      </div>
+      <div style="width:100%;height:480px;overflow:hidden;cursor:zoom-in;" onclick="openLightbox('twitter')">
+        <img src="twitter.jpeg" alt="Post X / Twitter Netflix" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div style="padding:0.9rem 0 0;text-align:center;">
+        <div class="project-card-tag">X · Post fictif</div>
+        <div style="font-family:var(--font-display);font-size:1rem;font-weight:400;color:var(--text);margin:0.3rem 0;">Netflix — Tweet fictif</div>
+        <div class="project-card-desc">Post X imaginé pour la marque Netflix dans le cadre d'un exercice créatif.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ECOMMERCE -->
+<section id="ecommerce" style="border-top: 1px solid var(--border);">
+  <div class="section-eyebrow">E-commerce</div>
+  <h2 class="section-title">Projets perso<br><em>e-commerce.</em></h2>
+  <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:3rem;max-width:600px;">J'ai créé et géré deux boutiques Shopify personnelles, de l'identité visuelle à la stratégie de contenu — en passant par l'architecture produit et l'expérience client.</p>
+
+  <!-- Refonte Zara video -->
+  <div style="margin-bottom:5rem;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:2rem;">
+      <div>
+        <div class="section-eyebrow" style="margin-bottom:0.75rem;">Projet école</div>
+        <h3 style="font-family:var(--font-display);font-size:1.8rem;font-weight:400;margin-bottom:1rem;">Refonte Zara<br><em style="color:var(--gold);">UX & Stratégie digitale</em></h3>
+        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.9;">
+          Dans le cadre d'un projet de cours, j'ai repensé l'expérience e-commerce
+          du site Zara — de la navigation à la fiche produit. L'objectif : 
+          améliorer le parcours utilisateur et moderniser la stratégie de contenu.
+          Compétences mobilisées : audit UX, benchmarking, maquettage et présentation vidéo.
+        </p>
+      </div>
+      <div>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/p9ZdyU1eOnQ" title="Refonte Zara" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 boutiques -->
+  <div class="ecom-grid" style="grid-template-columns:1fr 1fr;">
+
+    <div class="ecom-card" style="padding:0;overflow:hidden;">
+      <div style="width:100%;overflow:hidden;background:var(--bg-card2);">
+        <img src="montessia.jpeg" alt="Boutique Montessia" onclick="openLightbox('montessia')" style="width:100%;height:auto;display:block;cursor:zoom-in;transition:transform 0.5s;">
+      </div>
+      <div style="padding:2rem;">
+        <div class="ec-num" style="margin-bottom:0.75rem;">01</div>
+        <div class="ec-tag">Projet perso · Shopify</div>
+        <div class="ec-title">Montessia</div>
+        <div class="ec-desc">
+          Boutique e-commerce dédiée à la vente de boîtes de montre haut de gamme. 
+          J'ai développé l'identité visuelle, conçu la boutique Shopify, géré 
+          le catalogue produit et élaboré la stratégie de contenu.
+        </div>
+        <div class="ec-pills">
+          <span class="ec-pill">Branding</span>
+          <span class="ec-pill">Shopify</span>
+          <span class="ec-pill">Horlogerie</span>
+        </div>
+      </div>
+    </div>
+
+        <div class="ecom-card" style="padding:0;overflow:hidden;">
+      <div style="width:100%;overflow:hidden;background:var(--bg-card2);">
+        <img src="florify.jpeg" alt="Boutique FlorifyHome" onclick="openLightbox('florify')" style="width:100%;height:auto;display:block;cursor:zoom-in;transition:transform 0.5s;">
+      </div>
+      <div style="padding:2rem;">
+        <div class="ec-num" style="margin-bottom:0.75rem;">02</div>
+        <div class="ec-tag">Projet perso · Shopify</div>
+        <div class="ec-title">FlorifyHome</div>
+        <div class="ec-desc">
+          Boutique de décoration intérieure sur le thème de la nature et du vert. 
+          Création du branding, mise en page produits et stratégie de contenu 
+          axée sur l'esthétique naturelle et le lifestyle végétal.
+        </div>
+        <div class="ec-pills">
+          <span class="ec-pill">Branding</span>
+          <span class="ec-pill">Shopify</span>
+          <span class="ec-pill">Lifestyle</span>
+        </div>
+    </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Screenshots placeholder -->
+  <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1.5rem;letter-spacing:0.05em;">
+    
+  </p>
+  </section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="gold-line"></div>
+  <div class="section-eyebrow" style="justify-content:center;">Contact</div>
+  <h2 class="section-title">Travaillons <em>ensemble.</em></h2>
+  <p class="contact-sub">
+    Je suis disponible pour une alternance à partir de [date]. 
+    N'hésitez pas à me contacter pour échanger sur votre besoin.
+  </p>
+  <div class="contact-links">
+    <a href="mailto:ton@email.com" class="contact-link primary">✉ ton@email.com</a>
+    <a href="https://linkedin.com/in/tonprofil" target="_blank" class="contact-link">LinkedIn →</a>
+    <a href="https://instagram.com/toncompte" target="_blank" class="contact-link">Instagram →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Rafael Lavocat-Dubuis</p>
+  <p>Marketing Digital & Communication</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&larr;</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&rarr;</button>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+
+<script>
+  const carousels = {
+    'drake': ['drake.jpeg', 'drake 1.jpeg', 'drake 2.jpeg', 'drake 3.jpeg'],
+    'artiste': ['artiste.jpeg', 'artiste 1.jpeg', 'artiste 2.jpeg', 'artiste 3.jpeg', 'artiste 4.jpeg'],
+    'spotify': ['spotify.jpeg', 'spotify 1.jpeg', 'spotify 2.jpeg', 'spotify 3.jpeg'],
+    'indila': ['indila.jpeg', 'indila 1.jpeg', 'indila 2.jpeg', 'indila 3.jpeg'],
+    'netflix': ['netflix.jpeg', 'netflix 1.jpeg', 'netflix 2.jpeg', 'netflix 3.jpeg', 'netflix 4.jpeg', 'netflix 5.jpg'],
+    'battle luidgi': ['battle luidgi.jpeg'],
+    'battle travis': ['battle travis.jpeg'],
+    'linkedin-mika': ['linkedin mika 1.jpeg', 'linkedin mika 2.jpeg'],
+    'linkedin-mika-1': ['linkedin mika 1.jpeg'],
+    'linkedin-mika-2': ['linkedin mika 2.jpeg'],
+    'linkedin-nathan': ['linkedin nathan.jpeg'],
+    'montessia': ['montessia.jpeg'],
+    'florify': ['florify.jpeg'],
+    'twitter': ['twitter.jpeg']
+  };
+
+  let currentCarousel = [];
+  let currentIndex = 0;
+
+  function swapMain(key, src, thumbEl) {
+    document.getElementById('main-' + key).src = src;
+    const thumbsRow = thumbEl.parentElement;
+    thumbsRow.querySelectorAll('img').forEach(t => t.classList.remove('active'));
+    thumbEl.classList.add('active');
+  }
+
+  function openLightbox(key, index) {
+    currentCarousel = carousels[key] || [key + '.jpeg'];
+    if (index !== undefined) {
+      currentIndex = index;
+    } else {
+      const mainImg = document.getElementById('main-' + key);
+      const shownSrc = mainImg ? mainImg.getAttribute('src') : null;
+      const foundIndex = shownSrc ? currentCarousel.indexOf(shownSrc) : -1;
+      currentIndex = foundIndex >= 0 ? foundIndex : 0;
+    }
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('active');
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+  }
+
+  function navLightbox(dir) {
+    currentIndex = (currentIndex + dir + currentCarousel.length) % currentCarousel.length;
+    updateLightbox();
+  }
+
+  function updateLightbox() {
+    document.getElementById('lightbox-img').src = currentCarousel[currentIndex];
+    document.getElementById('lightbox-counter').textContent = (currentIndex + 1) + ' / ' + currentCarousel.length;
+    const nav = currentCarousel.length > 1 ? 'flex' : 'none';
+    document.querySelector('.lightbox-prev').style.display = nav;
+    document.querySelector('.lightbox-next').style.display = nav;
+  }
+
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (!document.getElementById('lightbox').classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navLightbox(-1);
+    if (e.key === 'ArrowRight') navLightbox(1);
+  });
+</script>
+
+</body>
+</html>
